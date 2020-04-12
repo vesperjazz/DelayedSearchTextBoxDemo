@@ -1,0 +1,32 @@
+﻿<Window x:Class="DelayedSearchTextBoxDemo.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DelayedSearchTextBoxDemo"
+        mc:Ignorable="d" 
+        Title="Delayed Keystroke TextBox Demo" 
+        ResizeMode="NoResize"
+        Height="170" Width="300">
+    <Grid>
+        <StackPanel VerticalAlignment="Center">
+            <!-- No need to specify KeystrokeDelayMilliseconds if using default value of 300ms delay. -->
+            <!-- 300ms delay should be the sweet spot, however uncles and aunties may type much slower. -->
+            <local:DelayedSearchTextBox x:Name="MySearchTextBox"
+                                        Height="50" Margin="10,0" FontSize="20"
+                                        KeystrokeDelayMilliseconds="300"
+                                        OnDelayedSearch="MySearchTextBox_OnDelayedSearch"/>
+            <TextBlock Margin="0,10,0,0"
+                       FontWeight="Bold"
+                       HorizontalAlignment="Center"
+                       Text="{Binding UpdateID}"/>
+            <TextBlock Margin="10,10,10,0"
+                       Foreground="Red"
+                       FontWeight="Bold"
+                       Text="GUID will only change when keystroke stops for a specified amount of time (delayed)."
+                       TextWrapping="Wrap"
+                       HorizontalAlignment="Center"
+                       TextAlignment="Center"/>
+        </StackPanel>
+    </Grid>
+</Window>
